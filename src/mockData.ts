@@ -11,6 +11,7 @@ export const MOCK_SUGGESTIONS: CarSuggestion[] = [
     priceEUR: 58900,
     bodyType: "Coupe",
     horsepower: 374,
+    fuelType: "Petrol",
     zeroToHundredSec: 4.3,
     imageUrl: "https://placehold.co/600x360/0a0a0a/e2001a?text=BMW+M240i",
     reason:
@@ -24,6 +25,7 @@ export const MOCK_SUGGESTIONS: CarSuggestion[] = [
     priceEUR: 52500,
     bodyType: "Hatchback",
     horsepower: 310,
+    fuelType: "Petrol",
     zeroToHundredSec: 4.8,
     imageUrl: "https://placehold.co/600x360/0a0a0a/e2001a?text=Audi+S3",
     reason:
@@ -37,6 +39,7 @@ export const MOCK_SUGGESTIONS: CarSuggestion[] = [
     priceEUR: 54900,
     bodyType: "Coupe",
     horsepower: 449,
+    fuelType: "Petrol",
     zeroToHundredSec: 4.5,
     imageUrl: "https://placehold.co/600x360/0a0a0a/e2001a?text=Mustang+GT",
     reason:

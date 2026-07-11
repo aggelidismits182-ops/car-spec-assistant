@@ -6,7 +6,6 @@ export interface CarSuggestion {
   make: string;
   model: string;
   year: number;
-  brand:string;//marka
   priceEUR: number;
   bodyType: "Coupe" | "Sedan" | "Hatchback" | "SUV" | "Convertible" | "Wagon";//eidos skeletou
   horsepower: number;//ippodynamh
