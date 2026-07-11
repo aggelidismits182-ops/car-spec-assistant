@@ -24,9 +24,11 @@ export function filterCars(query: string, cars: CarSuggestion[]): CarSuggestion[
   }
 
   // Μάρκα (π.χ. "bmw")
-  results = results.filter(car =>
-    text.includes(car.brand.toLowerCase()) ? true : true
-  );
+  // Μάρκα (π.χ. "bmw") — φιλτράρει ΜΟΝΟ αν ο χρήστης ανέφερε κάποια μάρκα
+const mentionedBrand = cars.find(car => text.includes(car.make.toLowerCase()));
+if (mentionedBrand) {
+  results = results.filter(car => car.make === mentionedBrand.make);
+}
 
   return results;
 }
