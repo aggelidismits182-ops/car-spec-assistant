@@ -2,6 +2,7 @@ import { useState, FormEvent } from "react";
 import CarCard from "./CarCard";
 import { MOCK_SUGGESTIONS } from "./mockData";
 import type { CarSuggestion } from "./types";
+import { filterCars } from "./filterCars";
 
 export default function App() {
   const [input, setInput] = useState("");
@@ -20,7 +21,7 @@ export default function App() {
       // --- STAGE 1 (now): mock data, just to prove the UI/state flow works.
       // Fake a network delay so the loading state is actually visible.
       await new Promise((resolve) => setTimeout(resolve, 900));
-      setResults(MOCK_SUGGESTIONS);
+      setResults(filterCars(input, MOCK_SUGGESTIONS));
 
       // --- STAGE 2 (next): swap the block above for a real call, e.g.
       //
