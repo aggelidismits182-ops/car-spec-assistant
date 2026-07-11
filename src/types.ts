@@ -7,9 +7,10 @@ export interface CarSuggestion {
   model: string;
   year: number;
   priceEUR: number;
-  bodyType: "Coupe" | "Sedan" | "Hatchback" | "SUV" | "Convertible" | "Wagon";
-  horsepower: number;
+  bodyType: "Coupe" | "Sedan" | "Hatchback" | "SUV" | "Convertible" | "Wagon";//eidos skeletou
+  horsepower: number;//ippodynamh
   zeroToHundredSec: number;
   imageUrl: string;
+  fuelType: "Petrol" | "Diesel" | "Electric" | "Hybrid";//eidos kausimou
   reason: string; // AI-generated (or mocked) explanation of why this fits the prompt
 }
