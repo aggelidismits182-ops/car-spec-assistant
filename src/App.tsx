@@ -1,8 +1,6 @@
 import { useState, FormEvent } from "react";
 import CarCard from "./CarCard";
-import { MOCK_SUGGESTIONS } from "./mockData";
 import type { CarSuggestion } from "./types";
-import { filterCars } from "./filterCars";
 
 export default function App() {
   const [input, setInput] = useState("");
