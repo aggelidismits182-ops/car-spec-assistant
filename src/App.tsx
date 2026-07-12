@@ -20,19 +20,19 @@ export default function App() {
     try {
       // --- STAGE 1 (now): mock data, just to prove the UI/state flow works.
       // Fake a network delay so the loading state is actually visible.
-      await new Promise((resolve) => setTimeout(resolve, 900));
-      setResults(filterCars(input, MOCK_SUGGESTIONS));
+      // await new Promise((resolve) => setTimeout(resolve, 900));
+      //setResults(filterCars(input, MOCK_SUGGESTIONS));
 
       // --- STAGE 2 (next): swap the block above for a real call, e.g.
       //
-      // const res = await fetch("/api/suggest", {
-      //   method: "POST",
-      //   headers: { "Content-Type": "application/json" },
-      //   body: JSON.stringify({ prompt: input }),
-      // });
-      // if (!res.ok) throw new Error("Η κλήση στο AI απέτυχε.");
-      // const data: CarSuggestion[] = await res.json();
-      // setResults(data);
+      const res = await fetch("/api/suggest", {
+      method: "POST",
+         headers: { "Content-Type": "application/json" },
+         body: JSON.stringify({ prompt: input }),
+       });
+       if (!res.ok) throw new Error("Η κλήση στο AI απέτυχε.");
+       const data: CarSuggestion[] = await res.json();
+       setResults(data);
     } catch (err) {
       setError(
         err instanceof Error ? err.message : "Κάτι πήγε στραβά. Δοκίμασε ξανά."

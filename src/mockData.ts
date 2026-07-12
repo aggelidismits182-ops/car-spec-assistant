@@ -56,7 +56,7 @@ export const MOCK_SUGGESTIONS: CarSuggestion[] = [
     horsepower: 72,
     fuelType: "Petrol",
     zeroToHundredSec: 14.6,
-    imageUrl: "https://placehold.co/600x360/0a0a0a/e2001a?text=Toyota+Yaris",
+    imageUrl: "https://images.carsguide.com.au/image/upload/e_trim:10,f_auto,c_scale,t_cg_base,w_678/v1/editorial/vhs/2025-Toyota-Yaris-Hybrid-1490x790--(1).png",
     reason: "Οικονομικό και αξιόπιστο, ιδανικό για πόλη και νέους οδηγούς.",
   },
   {
@@ -69,7 +69,7 @@ export const MOCK_SUGGESTIONS: CarSuggestion[] = [
     horsepower: 95,
     fuelType: "Petrol",
     zeroToHundredSec: 10.8,
-    imageUrl: "https://placehold.co/600x360/0a0a0a/e2001a?text=VW+Polo",
+    imageUrl: "https://www.onlineauto.com.au/contentAsset/image/f146d27c829a47b0731e42d9a278cda3",
     reason: "Ποιοτικό μικρό hatchback με χαμηλή κατανάλωση και άνετο σαλόνι.",
   },
   {
@@ -82,7 +82,7 @@ export const MOCK_SUGGESTIONS: CarSuggestion[] = [
     horsepower: 83,
     fuelType: "Hybrid",
     zeroToHundredSec: 12.2,
-    imageUrl: "https://placehold.co/600x360/0a0a0a/e2001a?text=Suzuki+Swift",
+    imageUrl: "https://media.umbraco.io/suzuki-gb/smtlqp3h/image53.png",
     reason: "Ελαφρύ, ευέλικτο και ήπια υβριδικό — πολύ χαμηλά έξοδα χρήσης.",
   },
   {
@@ -95,7 +95,7 @@ export const MOCK_SUGGESTIONS: CarSuggestion[] = [
     horsepower: 130,
     fuelType: "Diesel",
     zeroToHundredSec: 10.6,
-    imageUrl: "https://placehold.co/600x360/0a0a0a/e2001a?text=Peugeot+308",
+    imageUrl: "https://images.carsguide.com.au/image/upload/e_trim:10,f_auto,c_scale,t_cg_base,w_678/v1/editorial/vhs/2025-Peugeot-308-Hatch-1490x790--(1).png",
     reason: "Diesel με πολύ χαμηλή κατανάλωση, ιδανικό για μεγάλα ταξίδια.",
   },
   {
@@ -108,7 +108,7 @@ export const MOCK_SUGGESTIONS: CarSuggestion[] = [
     horsepower: 460,
     fuelType: "Electric",
     zeroToHundredSec: 3.1,
-    imageUrl: "https://placehold.co/600x360/0a0a0a/e2001a?text=Tesla+Model+3",
+    imageUrl: "https://cdn.gcdata.gr/c3/p_1920_1811068.webp",
     reason: "Ηλεκτρικό με εκρηκτική επιτάχυνση και μηδενικά καύσιμα.",
   },
   {
@@ -121,7 +121,7 @@ export const MOCK_SUGGESTIONS: CarSuggestion[] = [
     horsepower: 230,
     fuelType: "Hybrid",
     zeroToHundredSec: 8.0,
-    imageUrl: "https://placehold.co/600x360/0a0a0a/e2001a?text=Hyundai+Tucson",
+    imageUrl: "https://images.carsguide.com.au/image/upload/e_trim:10,f_auto,c_scale,t_cg_base,w_678/v1/editorial/vhs/2025-Hyundai-Tucson-Hybrid-1490x790--(1).png",
     reason: "Οικογενειακό SUV με υβριδική οικονομία και πλούσιο εξοπλισμό.",
   },
   {
@@ -134,7 +134,7 @@ export const MOCK_SUGGESTIONS: CarSuggestion[] = [
     horsepower: 184,
     fuelType: "Petrol",
     zeroToHundredSec: 6.5,
-    imageUrl: "https://placehold.co/600x360/0a0a0a/e2001a?text=Mazda+MX-5",
+    imageUrl: "https://images.carsguide.com.au/image/upload/e_trim:10,f_auto,c_scale,t_cg_base,w_678/v1/editorial/vhs/2025-Mazda-MX-5-1490x790--(1).png",
     reason: "Το πιο διασκεδαστικό roadster — ελαφρύ, ανοιχτό, καθαρή οδήγηση.",
   },
   {
@@ -147,7 +147,7 @@ export const MOCK_SUGGESTIONS: CarSuggestion[] = [
     horsepower: 116,
     fuelType: "Diesel",
     zeroToHundredSec: 10.3,
-    imageUrl: "https://placehold.co/600x360/0a0a0a/e2001a?text=Skoda+Octavia",
+    imageUrl: "https://images.carsguide.com.au/image/upload/e_trim:10,f_auto,c_scale,t_cg_base,w_678/v1/editorial/vhs/2025-Skoda-Octavia-Wagon-1490x790--(1).png",
     reason: "Τεράστιος χώρος αποσκευών με diesel οικονομία — ο βασιλιάς της πρακτικότητας.",
   },
 ];
