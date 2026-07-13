@@ -11,17 +11,29 @@ function formatPrice(value: number): string {
     maximumFractionDigits: 0,
   }).format(value);
 }
+function carImageUrl(make: string, model: string): string {
+  return `https://cdn.imagin.studio/getImage?customer=hrjavascript-mastery&make=${encodeURIComponent(
+    make
+  )}&modelFamily=${encodeURIComponent(model.split(" ")[0])}&zoomType=fullscreen`;
+}
+
 
 export default function CarCard({ car }: CarCardProps) {
   return (
     <article className="car-card">
       <div className="car-card__image-wrap">
         <img
-          src={car.imageUrl}
-          alt={`${car.make} ${car.model}`}
-          className="car-card__image"
-          loading="lazy"
-        />
+  src={carImageUrl(car.make, car.model)}
+  alt={`${car.make} ${car.model}`}
+  className="car-card__image"
+  loading="lazy"
+  onError={(e) => {
+    const img = e.target as HTMLImageElement;
+    if (img.src !== car.imageUrl) {
+      img.src = car.imageUrl;
+    }
+  }}
+/>
         <span className="car-card__price">{formatPrice(car.priceEUR)}</span>
       </div>
 
