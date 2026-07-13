@@ -16,10 +16,20 @@ function carImageUrl(make: string, model: string): string {
     make
   )}&modelFamily=${encodeURIComponent(model.split(" ")[0])}&zoomType=fullscreen`;
 }
+function carGrSearchUrl(make: string, model: string): string {
+  const query = encodeURIComponent(`${make} ${model.split(" ")[0]}`);
+  return `https://www.car.gr/classifieds/cars/?q=${query}`;
+}
 
 
 export default function CarCard({ car }: CarCardProps) {
   return (
+    <a
+    href={carGrSearchUrl(car.make, car.model)}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="car-card__link"
+    >
     <article className="car-card">
       <div className="car-card__image-wrap">
         <img
@@ -61,5 +71,6 @@ export default function CarCard({ car }: CarCardProps) {
         <p className="car-card__reason">{car.reason}</p>
       </div>
     </article>
+    </a>
   );
 }

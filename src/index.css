@@ -237,3 +237,14 @@ body {
   border-top: 1px solid var(--border);
   padding-top: 12px;
 }
+.car-card__link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.car-card__link:hover .car-card {
+  transform: translateY(-4px);
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
