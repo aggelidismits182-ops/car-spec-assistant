@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Car Spec Assistant logo: speedometer gauge, black + red theme -->
+  <defs>
+    <linearGradient id="red" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ff2b3a"/>
+      <stop offset="1" stop-color="#c40015"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background rounded square -->
+  <rect x="0" y="0" width="512" height="512" rx="112" fill="#0a0a0a"/>
+
+  <!-- Gauge arc (background track) -->
+  <path d="M 106 340 A 160 160 0 1 1 406 340"
+        fill="none" stroke="#2a2a2a" stroke-width="34" stroke-linecap="round"/>
+
+  <!-- Gauge arc (red performance zone) -->
+  <path d="M 256 96 A 160 160 0 0 1 406 340"
+        fill="none" stroke="url(#red)" stroke-width="34" stroke-linecap="round"/>
+
+  <!-- Tick marks -->
+  <g stroke="#5a5a5a" stroke-width="10" stroke-linecap="round">
+    <line x1="122" y1="322" x2="146" y2="310"/>
+    <line x1="150" y1="180" x2="170" y2="198"/>
+    <line x1="256" y1="118" x2="256" y2="146"/>
+  </g>
+  <g stroke="#ff2b3a" stroke-width="10" stroke-linecap="round">
+    <line x1="362" y1="180" x2="342" y2="198"/>
+    <line x1="390" y1="322" x2="366" y2="310"/>
+  </g>
+
+  <!-- Needle pointing into the red zone -->
+  <g>
+    <path d="M 256 256 L 352 172" stroke="#f5f5f5" stroke-width="20" stroke-linecap="round"/>
+    <circle cx="256" cy="256" r="34" fill="#f5f5f5"/>
+    <circle cx="256" cy="256" r="16" fill="url(#red)"/>
+  </g>
+
+  <!-- Speed line under the gauge (nod to motion / car) -->
+  <g stroke="url(#red)" stroke-width="18" stroke-linecap="round">
+    <line x1="150" y1="404" x2="362" y2="404"/>
+  </g>
+  <g stroke="#3a3a3a" stroke-width="14" stroke-linecap="round">
+    <line x1="186" y1="444" x2="326" y2="444"/>
+  </g>
+</svg>
