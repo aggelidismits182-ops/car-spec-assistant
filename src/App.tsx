@@ -2,6 +2,20 @@ import { useState, FormEvent } from "react";
 import CarCard from "./CarCard";
 import type { CarSuggestion } from "./types";
 
+const BRANDS = [
+  { name: "BMW", slug: "bmw" },
+  { name: "Mercedes", slug: "mercedes-benz" },
+  { name: "Audi", slug: "audi" },
+  { name: "Toyota", slug: "toyota" },
+  { name: "VW", slug: "volkswagen" },
+  { name: "Porsche", slug: "porsche" },
+  { name: "Tesla", slug: "tesla" },
+  { name: "Ford", slug: "ford" },
+];
+
+function brandLogo(slug: string): string {
+  return `https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/thumb/${slug}.png`;
+}
 export default function App() {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
@@ -63,6 +77,19 @@ export default function App() {
           {loading ? "Ψάχνω..." : "Βρες μου αυτοκίνητο"}
         </button>
       </form>
+      <div className="brand-bar">
+          {BRANDS.map((b) => (
+            <button
+              key={b.slug}
+              type="button"
+              className="brand-chip"
+              onClick={() => setInput(`θέλω ένα ${b.name}`)}
+            >
+              <img src={brandLogo(b.slug)} alt={b.name} />
+              <span>{b.name}</span>
+            </button>
+          ))}
+        </div>
 
       {error && <p className="app__error">{error}</p>}
 
@@ -75,9 +102,15 @@ export default function App() {
 
       {!loading && results.length > 0 && (
         <section className="app__results">
-          {results.map((car) => (
-            <CarCard key={car.id} car={car} />
-          ))}
+          {results.map((car, i) => (
+  <div
+    key={car.id}
+    className="card-wrap"
+    style={{ animationDelay: `${i * 0.08}s` }}
+  >
+    <CarCard car={car} />
+  </div>
+))}
         </section>
       )}
 
