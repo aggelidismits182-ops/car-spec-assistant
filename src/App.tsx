@@ -1,6 +1,9 @@
-import { useState, FormEvent } from "react";
+import { useState, FormEvent, useEffect  } from "react";
 import CarCard from "./CarCard";
 import type { CarSuggestion } from "./types";
+import { supabase } from "./supabase";
+import Auth from "./Auth";
+import type { Session } from "@supabase/supabase-js";
 
 const BRANDS = [
   { name: "BMW", slug: "bmw" },
@@ -17,6 +20,17 @@ function brandLogo(slug: string): string {
   return `https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/thumb/${slug}.png`;
 }
 export default function App() {
+  const [session, setSession] = useState<Session | null>(null);
+
+useEffect(() => {
+  supabase.auth.getSession().then(({ data }) => setSession(data.session));
+
+  const { data: listener } = supabase.auth.onAuthStateChange(
+    (_event, session) => setSession(session)
+  );
+
+  return () => listener.subscription.unsubscribe();
+}, []);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [results, setResults] = useState<CarSuggestion[]>([]);
@@ -52,6 +66,20 @@ export default function App() {
     } finally {
       setLoading(false);
     }
+  }
+
+  if (!session) {
+    return (
+      <div className="app">
+        <header className="app__header">
+          <img src="/logo.svg" alt="Car Spec Assistant logo" className="app__logo" />
+          <h1>
+            Car Spec <span className="accent">Assistant</span>
+          </h1>
+        </header>
+        <Auth />
+      </div>
+    );
   }
 
   return (
