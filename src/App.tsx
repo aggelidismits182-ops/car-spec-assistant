@@ -48,6 +48,7 @@ useEffect(() => {
   const [results, setResults] = useState<CarSuggestion[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [favorites, setFavorites] = useState<FavoriteRow[]>([]);
+  const [showFavorites, setShowFavorites] = useState(false);
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
@@ -111,6 +112,10 @@ async function handleToggleFavorite(car: CarSuggestion) {
     );
   }
 
+  const displayedCars = showFavorites
+    ? favorites.map((f) => f.car_data)
+    : results;
+
   return (
     <div className="app">
       <header className="app__header">
@@ -120,6 +125,12 @@ async function handleToggleFavorite(car: CarSuggestion) {
         <p className="app__subtitle">
           Πες μας τι ψάχνεις σε ένα αυτοκίνητο και θα σου προτείνουμε μοντέλα.
         </p>
+        <button
+          className="app__fav-toggle"
+          onClick={() => setShowFavorites(!showFavorites)}
+        >
+          {showFavorites ? "← Πίσω στην αναζήτηση" : `❤️ Τα αγαπημένα μου (${favorites.length})`}
+        </button>
       </header>
 
       <form className="app__form" onSubmit={handleSubmit}>
@@ -159,7 +170,7 @@ async function handleToggleFavorite(car: CarSuggestion) {
 
       {!loading && results.length > 0 && (
         <section className="app__results">
-          {results.map((car, i) => (
+          {displayedCars.map((car, i) => (
   <div
     key={car.id}
     className="card-wrap"
