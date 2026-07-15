@@ -4,6 +4,8 @@ import type { CarSuggestion } from "./types";
 import { supabase } from "./supabase";
 import Auth from "./Auth";
 import type { Session } from "@supabase/supabase-js";
+import { addFavorite, removeFavorite, getFavorites } from "./favorites";
+import type { FavoriteRow } from "./favorites";
 
 const BRANDS = [
   { name: "BMW", slug: "bmw" },
@@ -21,9 +23,11 @@ function brandLogo(slug: string): string {
 }
 export default function App() {
   const [session, setSession] = useState<Session | null>(null);
+  
 
 useEffect(() => {
   supabase.auth.getSession().then(({ data }) => setSession(data.session));
+
 
   const { data: listener } = supabase.auth.onAuthStateChange(
     (_event, session) => setSession(session)
@@ -31,10 +35,19 @@ useEffect(() => {
 
   return () => listener.subscription.unsubscribe();
 }, []);
+useEffect(() => {
+    if (session) {
+      getFavorites().then(setFavorites).catch(console.error);
+    } else {
+      setFavorites([]);
+    }
+  }, [session]);
+
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [results, setResults] = useState<CarSuggestion[]>([]);
   const [error, setError] = useState<string | null>(null);
+  const [favorites, setFavorites] = useState<FavoriteRow[]>([]);
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
@@ -67,6 +80,22 @@ useEffect(() => {
       setLoading(false);
     }
   }
+async function handleToggleFavorite(car: CarSuggestion) {
+    const existing = favorites.find((f) => f.car_data.id === car.id);
+    try {
+      if (existing) {
+        await removeFavorite(existing.id);
+        setFavorites(favorites.filter((f) => f.id !== existing.id));
+      } else {
+        await addFavorite(car);
+        const fresh = await getFavorites();
+        setFavorites(fresh);
+      }
+    } catch (err) {
+      console.error("Σφάλμα στα αγαπημένα:", err);
+    }
+  }
+
 
   if (!session) {
     return (
@@ -136,7 +165,11 @@ useEffect(() => {
     className="card-wrap"
     style={{ animationDelay: `${i * 0.08}s` }}
   >
-    <CarCard car={car} />
+    <CarCard
+  car={car}
+  isFavorite={favorites.some((f) => f.car_data.id === car.id)}
+  onToggleFavorite={handleToggleFavorite}
+/>
   </div>
 ))}
         </section>

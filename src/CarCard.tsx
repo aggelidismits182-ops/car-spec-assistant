@@ -2,6 +2,8 @@ import type { CarSuggestion } from "./types";
 
 interface CarCardProps {
   car: CarSuggestion;
+  isFavorite: boolean;
+  onToggleFavorite: (car: CarSuggestion) => void;
 }
 
 function formatPrice(value: number): string {
@@ -22,7 +24,7 @@ function carGrSearchUrl(make: string, model: string): string {
 }
 
 
-export default function CarCard({ car }: CarCardProps) {
+export default function CarCard({ car, isFavorite, onToggleFavorite }: CarCardProps) {
   return (
     <a
     href={carGrSearchUrl(car.make, car.model)}
@@ -44,6 +46,19 @@ export default function CarCard({ car }: CarCardProps) {
     }
   }}
 />
+
+<button
+  type="button"
+  className={`car-card__fav ${isFavorite ? "is-active" : ""}`}
+  onClick={(e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    onToggleFavorite(car);
+  }}
+  aria-label={isFavorite ? "Αφαίρεση από αγαπημένα" : "Προσθήκη στα αγαπημένα"}
+>
+  {isFavorite ? "❤️" : "🤍"}
+</button>
         <span className="car-card__price">{formatPrice(car.priceEUR)}</span>
       </div>
 
