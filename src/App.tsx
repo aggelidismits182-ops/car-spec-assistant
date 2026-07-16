@@ -21,6 +21,10 @@ const BRANDS = [
 function brandLogo(slug: string): string {
   return `https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/thumb/${slug}.png`;
 }
+
+function carKey(car: CarSuggestion): string {
+  return `${car.make}-${car.model}-${car.year}`.toLowerCase();
+}
 export default function App() {
   const [session, setSession] = useState<Session | null>(null);
   
@@ -82,7 +86,7 @@ useEffect(() => {
     }
   }
 async function handleToggleFavorite(car: CarSuggestion) {
-    const existing = favorites.find((f) => f.car_data.id === car.id);
+    const existing = favorites.find((f) => carKey(f.car_data) === carKey(car));
     try {
       if (existing) {
         await removeFavorite(existing.id);
@@ -184,7 +188,7 @@ async function handleToggleFavorite(car: CarSuggestion) {
   >
     <CarCard
   car={car}
-  isFavorite={favorites.some((f) => f.car_data.id === car.id)}
+  isFavorite={favorites.some((f) => carKey(f.car_data) === carKey(car))}
   onToggleFavorite={handleToggleFavorite}
 />
   </div>
