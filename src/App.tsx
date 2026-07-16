@@ -131,6 +131,12 @@ async function handleToggleFavorite(car: CarSuggestion) {
         >
           {showFavorites ? "← Πίσω στην αναζήτηση" : `❤️ Τα αγαπημένα μου (${favorites.length})`}
         </button>
+        <button
+          className="auth__logout"
+          onClick={() => supabase.auth.signOut()}
+        >
+          Αποσύνδεση
+        </button>
       </header>
 
       <form className="app__form" onSubmit={handleSubmit}>
